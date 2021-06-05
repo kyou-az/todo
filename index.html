@@ -29,18 +29,10 @@
             </div>
         </div>
 
-        
-        <ul class="list-group list-group-horizontal">
-                <li class="list-group-item" id="todos-title"></li>
-                <li class="list-group-item" id="todos-due-date"></li>
-                <li class="list-group-item" id="todos-check-box"></li>
-        </ul>    
-        
 
-    </div>
-        
-    
-  </div>
+        <div id="todo-list">
+
+        </div>
     </div>
 </body>
 <script>
@@ -80,21 +72,19 @@
         });
         
         function displayTodosList() {
-            $("#todos-title").empty();
-            $("#todos-due-date").empty();
-            $("#todos-check-box").empty();
+            $("#todo-list").empty();
 
             todos.forEach(function (todo, i) {
                 if (!todo.isDone) {
 
-                    $('#todos-title').append(
-                        `<p>${todo.title}</p>`
-                    );
-                    $('#todos-due-date').append(
-                        `<p>${todo.dueDate}</p>`
-                    );
-                    $('#todos-check-box').append(
-                        `<input id="is-done-check-${i}" type="checkbox" value="${i}">`
+                    $('#todo-list').append(
+                        `
+                        <ul class="list-group list-group-horizontal">
+                            <li class="list-group-item" id="todos-title"><p>${todo.title}</p></li>
+                            <li class="list-group-item" id="todos-due-date"><p>${todo.dueDate}</p></li>
+                            <li class="list-group-item" id="todos-check-box"><input id="is-done-check-${i}" type="checkbox" value="${i}"></li>
+                        </ul>
+                        `
                     );
 
                     $(`#is-done-check-${i}`).click(function (e) {
